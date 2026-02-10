@@ -46,7 +46,7 @@ To push the release code to the public remote using an orphan branch without pri
    git push public release-branch:main
    ```
 
-## Update Public Repo
+## Update Public Repo (keeping public repo's commit history)
 
 To update the public repository with the latest changes from the private repository, maintaining the separate history:
 
@@ -68,3 +68,25 @@ To update the public repository with the latest changes from the private reposit
    git push public release-branch:main
    ```
 
+## Update Public Repo (reset public repo's commit history)
+
+1. **Delete release-branch**:
+   ```bash
+   git branch -D release-branch
+   ```
+
+2. **Create release-branch with --orphan**:
+   ```bash
+   git checkout --orphan release-branch
+   ```
+
+3. **Add files and commit**:
+   ```bash
+   git add .
+   git commit -m "Clean history release v1.2"
+   ```
+
+4. **Push updates**:
+   ```bash
+   git push public release-branch:main --force
+   ```
