@@ -90,3 +90,32 @@ To update the public repository with the latest changes from the private reposit
    ```bash
    git push public release-branch:main --force
    ```
+
+## Diagram
+```mermaid
+graph TD
+    %% Node Definitions with manual line breaks
+    Start("<b>Work Completed</b><br/>on Private main branch") --> Choice{Choose Update<br/>Method}
+
+    subgraph Option_A [Option A: Re-create]
+        Choice -->|Fresh Start| A1["<b>1. Delete Old Local Branch</b><br/>git branch -D release-branch"]
+        A1 --> A2["<b>2. Create New Orphan</b><br/>git checkout --orphan release-branch"]
+        A2 --> A3["<b>Result:</b><br/>Exactly 1 Clean Commit"]
+    end
+
+    subgraph Option_B [Option B: Keep & Update]
+        Choice -->|Incremental| B1["<b>1. Switch to Release</b><br/>git checkout release-branch"]
+        B1 --> B2["<b>2. Sync Files Only</b><br/>git checkout main -- ."]
+        B2 --> B3["<b>Result:</b><br/>Clean Release History<br/>(v1, v2, v3...)"]
+    end
+
+    A3 --> Push["<b>Final Step: Force Push</b><br/>git push public <br/>release-branch:main <br/>--force"]
+    B3 --> Push
+    Push --> Final((<b>Public Repo<br/>Updated!</b>))
+
+    %% Styling for better visibility
+    style Option_A fill:#fff4dd,stroke:#d4a017,stroke-width:2px
+    style Option_B fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style Final fill:#dcedc8,stroke:#33691e,stroke-width:3px
+    style Start fill:#f5f5f5,stroke:#333
+```
