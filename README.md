@@ -7,7 +7,7 @@ This is a private repository for testing orphan branch.
 
 ## Add public remote for release
 ```bash
-git remote add public git@github.com:ywsong2/my-public-repo.git    
+git remote add public git@github.com:user_name/my-public-repo.git    
 ```
 
 ## Create orphan branch for release without history
@@ -18,10 +18,10 @@ git checkout --orphan release-branch
 ## List remote after adding public repo
 ```bash
 ~ git remote -v                                                  
-origin  git@github.com:ywsong2/my-private-repo.git (fetch)
-origin  git@github.com:ywsong2/my-private-repo.git (push)
-public  git@github.com:ywsong2/my-public-repo.git (fetch)
-public  git@github.com:ywsong2/my-public-repo.git (push)
+origin  git@github.com:user_name/my-private-repo.git (fetch)
+origin  git@github.com:user_name/my-private-repo.git (push)
+public  git@github.com:user_name/my-public-repo.git (fetch)
+public  git@github.com:user_name/my-public-repo.git (push)
 ```
 
 ## Release Process
